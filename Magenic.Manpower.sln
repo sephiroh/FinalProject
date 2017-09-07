@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenic.Manpower", "Magenic.Manpower\Magenic.Manpower.csproj", "{43D85727-A109-4971-829A-66B992EBA887}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Magenic.Manpower.Database", "Magenic.Manpower.Database\Magenic.Manpower.Database.sqlproj", "{F7CC96C2-5248-44C3-A752-2E1486D9C1E9}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Magenic.Manpower.WebApi", "Magenic.Manpower.WebApi\Magenic.Manpower.WebApi.xproj", "{EEB65245-5C38-4732-A359-81738710FCFE}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Magenic.Manpower.EFCore", "Magenic.Manpower.EFCore\Magenic.Manpower.EFCore.xproj", "{B7373859-90BA-4B56-B80A-C108B43948DF}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Magenic.Manpower.Test", "Magenic.Manpower.Test\Magenic.Manpower.Test.xproj", "{B792FDB1-472B-4E65-97E8-0647024617EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magenic.Manpower.v2", "Magenic.Manpower.v2\Magenic.Manpower.v2.csproj", "{B1A629FE-4796-402F-8972-C66FC63A88B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43D85727-A109-4971-829A-66B992EBA887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43D85727-A109-4971-829A-66B992EBA887}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43D85727-A109-4971-829A-66B992EBA887}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43D85727-A109-4971-829A-66B992EBA887}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7CC96C2-5248-44C3-A752-2E1486D9C1E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7CC96C2-5248-44C3-A752-2E1486D9C1E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7CC96C2-5248-44C3-A752-2E1486D9C1E9}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F7CC96C2-5248-44C3-A752-2E1486D9C1E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7CC96C2-5248-44C3-A752-2E1486D9C1E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7CC96C2-5248-44C3-A752-2E1486D9C1E9}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{EEB65245-5C38-4732-A359-81738710FCFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEB65245-5C38-4732-A359-81738710FCFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEB65245-5C38-4732-A359-81738710FCFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEB65245-5C38-4732-A359-81738710FCFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7373859-90BA-4B56-B80A-C108B43948DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7373859-90BA-4B56-B80A-C108B43948DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7373859-90BA-4B56-B80A-C108B43948DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7373859-90BA-4B56-B80A-C108B43948DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B792FDB1-472B-4E65-97E8-0647024617EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B792FDB1-472B-4E65-97E8-0647024617EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B792FDB1-472B-4E65-97E8-0647024617EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B792FDB1-472B-4E65-97E8-0647024617EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1A629FE-4796-402F-8972-C66FC63A88B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1A629FE-4796-402F-8972-C66FC63A88B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1A629FE-4796-402F-8972-C66FC63A88B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1A629FE-4796-402F-8972-C66FC63A88B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

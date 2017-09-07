@@ -1,0 +1,41 @@
+<div class="panel panel-default">
+    <table class="table table-striped table-bordered table-hover" >
+        <thead>
+            <tr>
+                <th style="width: 33% !Important;text-align: center;">Name</th>
+                <th style="width: 60% !Important;text-align: center;">Description</th>
+                <th style="width: 5% !Important;text-align: center;">Status</th>
+                <th style="width: 2% !Important;text-align: center;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="project in $ctrl.list" ng-if="$ctrl.list.length > 0">
+                <td>
+                    {{project.name}}
+                </td>
+                <td>
+                    <i>{{project.description}}</i>
+                </td>
+                <td style="text-align: center;">      
+                    <span title="Toggle Active">
+                            <input type="checkbox" data-hook="toggles" ng-model="project.isActive" data-id="project-{{project.id}}" />&nbsp;
+                    </span>
+                    
+                </td>
+                <td style="text-align: center;">
+                    <i class="glyphicon glyphicon-pencil" title="edit"
+                       style="cursor:pointer;" ng-click="$ctrl.edit(project)">
+                    </i>
+                    <!--<button title="Edit" type="button" class="btn btn-link btn-xs" ng-disabled="!project.isActive" ng-click="$ctrl.edit(project)">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </button>-->
+                </td>
+            </tr>
+            <tr ng-if="$ctrl.list.length <= 0">
+                <td colspan="4" style="text-align: center;">
+                    <i>Nothing to display</i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

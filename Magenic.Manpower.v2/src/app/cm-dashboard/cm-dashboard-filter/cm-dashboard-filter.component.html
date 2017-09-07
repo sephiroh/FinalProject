@@ -1,0 +1,30 @@
+<div class="container-fluid well well-sm">
+  <div class="col-md-12">
+    <div class="row form-inline">
+      <div class="form-group">
+        <label for="skill">Primary Skill :</label>
+        <select class="form-control" [(ngModel)]="params.skill">
+              <option value="0">--select--</option>
+              <option *ngFor="let skill of primarySkills" [value]="skill.id">{{skill.name}}</option>
+          </select>
+      </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="form-group">
+        <label for="project">Project :</label>
+        <select class="form-control" [(ngModel)]="params.project">
+              <option value="0">--select--</option>
+              <option *ngFor="let project of projects" [value]="project.id">{{project.name}}</option>
+          </select>
+      </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="form-group">
+        <label for="status">Status :</label>
+        <select class="form-control" [(ngModel)]="params.status">
+              <option value="0">--select--</option>
+              <option *ngFor="let status of statuses" [value]="status.id">{{status.name}}</option>
+          </select>
+      </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="form-group">
+        <button type="button" (click)="filter()" class="btn btn-default"><i class="glyphicon glyphicon-search"></i> Search</button>
+      </div>
+    </div>
+  </div>
+</div>

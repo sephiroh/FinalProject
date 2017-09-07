@@ -1,0 +1,209 @@
+﻿<style>
+    .custom-modal-container {
+        padding: 15px;
+    }
+
+    .custom-modal-header {
+        background-color: #219161;
+        color: #fff;
+        -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.75);
+        margin-top: -15px;
+        margin-bottom: 40px;
+    }
+</style>
+<div class="container-fluid custom-modal-container">
+    {{diagnostic}}
+    <div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">{{formTitle}}</h4>
+    </div>
+    <div class="modal-body">
+        <form class="form-container" name="applicantForm" [formGroup]="form">
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label for="firstName">First Name:</label>
+                    <input class="form-control" id="firstName" name="firstName" type="text" formControlName="firstName" />
+                </div>
+
+                <div *ngIf="form.controls.firstName.touched && form.controls.firstName.errors">
+                    <div class="alert alert-danger" *ngIf="form.controls.firstName.errors.required">
+                        First Name is required!
+                    </div>
+                    <div class="alert alert-danger" *ngIf="form.controls.firstName.errors.maxlength">
+                        You have reached the maximum character {{form.controls.firstName.errors.maxlength.requiredLength}} allowed for First Name!
+                    </div>
+                </div>
+
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label for="lastName">Last Name:</label>
+                    <input class="form-control" id="lastName" name="lastName" type="text" formControlName="lastName" />
+                </div>
+                <div *ngIf="form.controls.lastName.touched && form.controls.lastName.errors">
+                    <div class="alert alert-danger" *ngIf="form.controls.lastName.errors.required">
+                        Last Name is required!
+                    </div>
+                    <div class="alert alert-danger" *ngIf="form.controls.lastName.errors.maxlength">
+                        You have reached the maximum character {{form.controls.lastName.errors.maxlength.requiredLength}} allowed for Last Name!
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <label for="email">Email:</label>
+                    <input class="form-control" id="email" name="email" type="text" formControlName="email" />
+                </div>
+
+                <div *ngIf="form.controls.email.touched && form.controls.email.errors">
+                    <div class="alert alert-danger" *ngIf="form.controls.email.errors.required">
+                        Email is required!
+                    </div>
+                    <div class="alert alert-danger" *ngIf="form.controls.email.errors.InvalidEmailAddress">
+                        Invalid Email address format!
+                    </div>
+                    <div class="alert alert-danger" *ngIf="form.controls.email.errors.maxlength">
+                        You have reached the maximum character {{form.controls.email.errors.maxlength.requiredLength}} allowed for Email!
+                    </div>
+                </div>
+
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6" [ngClass]="{'col-md-6': formTitle == 'Edit Applicant', 'col-md-12': formTitle == 'Add Applicant' }">
+                    <label for="contactNumber">Contact #:</label>
+                    <input class="form-control" id="contactNumber" name="contactNumber" type="text" formControlName="contactNumber" />
+
+                    <div *ngIf="form.controls.contactNumber.touched && form.controls.contactNumber.errors">
+                        <div class="alert alert-danger" *ngIf="form.controls.contactNumber.errors.required">
+                            Contact Number is required!
+                        </div>
+                        <div class="alert alert-danger" *ngIf="form.controls.contactNumber.errors.maxlength">
+                            You have reached the maximum character {{form.controls.contactNumber.errors.maxlength.requiredLength}} allowed for Contact
+                            Number!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="primarySkill">Primary Skill:</label>
+                    <select class="form-control" name="primarySkill" id="primarySkill" formControlName="primarySkillId">
+                        <option value="{{primarySkill.id}}" *ngFor="let primarySkill of primarySkills">
+                            {{primarySkill.name}}
+                        </option>
+                    </select>
+                    <div *ngIf="form.controls.primarySkillId.touched && form.controls.primarySkillId.errors">
+                        <div class="alert alert-danger" *ngIf="form.controls.primarySkillId.errors.required">
+                            Primary Skill is required!
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6">
+                    <label for="yearsITExperience">Years of IT Experience:</label>
+                    <input class="form-control" id="yearsITExperience" name="yearsITExperience" type="text" formControlName="yearsITExperience" />
+
+                    <div *ngIf="form.controls.yearsITExperience.touched && form.controls.yearsITExperience.errors">
+                        <div class="alert alert-danger" *ngIf="form.controls.yearsITExperience.errors.maxlength">
+                            You have reached the maximum character {{form.controls.yearsITExperience.errors.maxlength.requiredLength}} allowed for Years of IT Experience!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="yearsForSpecificSkills">Years Experience For Specific Skills:</label>
+                    <input class="form-control" id="yearsForSpecificSkills" name="yearsForSpecificSkills" type="text" formControlName="yearsForSpecificSkills" />
+
+                    <div *ngIf="form.controls.yearsForSpecificSkills.touched && form.controls.yearsForSpecificSkills.errors">
+                        <div class="alert alert-danger" *ngIf="form.controls.yearsForSpecificSkills.errors.maxlength">
+                            You have reached the maximum character {{form.controls.yearsForSpecificSkills.errors.maxlength.requiredLength}} allowed for Years for specific skills!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6">
+                    <label for="currentPosition">Current Position:</label>
+                    <input class="form-control" id="currentPosition" name="currentPosition" type="text" formControlName="currentPosition" />
+
+                    <div *ngIf="form.controls.currentPosition.touched && form.controls.currentPosition.errors">
+                        <div class="alert alert-danger" *ngIf="form.controls.currentPosition.errors.maxlength">
+                            You have reached the maximum character {{form.controls.currentPosition.errors.maxlength.requiredLength}} allowed for Current Position!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="currentCompany">Current Company:</label>
+                    <input class="form-control" id="currentCompany" name="currentCompany" type="text" formControlName="currentCompany" />
+
+                    <div *ngIf="form.controls.currentCompany.touched && form.controls.currentCompany.errors">
+                        <div class="alert alert-danger" *ngIf="form.controls.currentCompany.errors.maxlength">
+                            You have reached the maximum character {{form.controls.currentCompany.errors.maxlength.requiredLength}} allowed for Current Company!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6">
+                    <label for="noticePeriod">Notice Period:</label>
+                    <input class="form-control" id="noticePeriod" name="noticePeriod" type="text" formControlName="noticePeriod" />
+
+                    <div *ngIf="form.controls.noticePeriod.touched && form.controls.noticePeriod.errors">
+                        <div class="alert alert-danger" *ngIf="form.controls.noticePeriod.errors.maxlength">
+                            You have reached the maximum character {{form.controls.noticePeriod.errors.maxlength.requiredLength}} allowed for Notice Period!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="pendingApplication">Pending Application:</label>
+                    <input class="form-control" id="pendingApplication" name="pendingApplication" type="text" formControlName="pendingApplication" />
+
+                    <div *ngIf="form.controls.pendingApplication.touched && form.controls.pendingApplication.errors">
+                        <div class="alert alert-danger" *ngIf="form.controls.pendingApplication.errors.maxlength">
+                            You have reached the maximum character {{form.controls.pendingApplication.errors.maxlength.requiredLength}} allowed for Pending Application!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6" *ngIf="formTitle == 'Edit Applicant' && status != 15">
+                    <label for="status">Status:</label>
+                    <select class="form-control" name="status" id="status" formControlName="status">
+                        <option value="{{status.id}}" *ngFor="let status of applicantStatusList">
+                            {{status.name}}
+                        </option>
+                    </select>
+                    <div *ngIf="form.controls.status.touched && form.controls.status.errors">
+                        <div class="alert alert-danger" *ngIf="form.controls.status.errors.required">
+                            Status is required!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6" *ngIf="formTitle == 'Edit Applicant' && status == 15">
+                    <label>Status:</label>
+                    <p><label>Hired</label></p>
+                </div>
+
+                <div class="col-md-6" *ngIf="formTitle == 'Edit Applicant' && status == 15">
+                    <label for="levelId">Level:</label>
+                    <select class="form-control" name="levelId" id="levelId" formControlName="levelId">
+                        <option value="{{level.id}}" *ngFor="let level of levels">
+                        {{level.name}}
+                        </option>
+                    </select>
+
+                    <div *ngIf="form.controls.levelId.touched && form.controls.levelId.errors">
+                        <div class="alert alert-danger" *ngIf="form.controls.levelId.errors.required">
+                            Level is required!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button (click)="save()" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+        </form>
+
+    </div>
+</div>

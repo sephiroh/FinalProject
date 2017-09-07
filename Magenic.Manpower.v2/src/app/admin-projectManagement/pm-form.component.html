@@ -1,0 +1,36 @@
+﻿<div>
+    <form (ngSubmit)="submit($event); projectForm.reset();" #projectForm="ngForm" novalidate>
+        <app-modal>
+            <div class="app-modal-header">
+                <span *ngIf="isEdit">Edit Project</span>
+                <span *ngIf="!isEdit">Add Project</span>
+            </div>
+            <div class="app-modal-body">
+
+                <div class="row">
+                    <div class="form-group col-lg-12">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Project Name" [(ngModel)]="project.name" #name="ngModel" style="width: 100%;" required />
+                        <div *ngIf="formErrors.name || name.touched">
+                            <i  style="font-size: small; color: red;">{{ formErrors.name }}</i> 
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-12">
+                        <label for="description">Description:</label>
+                        <textarea type="text" name="description" id="description" class="form-control" placeholder="Project Description" [(ngModel)]="project.description" #description="ngModel" required style="resize: none; height: 200px !important;"></textarea>
+                        <div *ngIf="formErrors.description || description.touched">
+                            <i style="font-size: small; color: red;">{{ formErrors.description }}</i> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="app-modal-footer">
+                <button type="button" class="btn btn-default" (click)="cancel(projectForm)">Close</button>
+                <button type="submit" [disabled]="disableSave()"  class="btn btn-primary">{{ saveCaption }}</button>
+            </div>
+        </app-modal>
+    </form>
+</div>
+

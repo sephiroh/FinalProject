@@ -1,0 +1,12 @@
+﻿<h3>
+    List of Technologies
+    <span class="pull-right">
+        <button type="button" class="btn btn-xs btn-primary" ng-click="vm.createTechModal()"><span class="glyphicon glyphicon-plus"></span></button>
+        <button type="button" class="btn btn-xs btn-default" ng-click="vm.refresh()"><span class="glyphicon glyphicon-refresh"></span></button>
+    </span>
+</h3>
+<hr />
+
+<tech-list on-edit="vm.updateTechModal(tech)" this-tech="vm.thisTech"></tech-list>
+
+<technology-details-form on-save="vm.save(tech)" this-tech="vm.thisTech" is-new="vm.isNew"></technology-details-form>

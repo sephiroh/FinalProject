@@ -1,0 +1,9 @@
+﻿body {
+    min-height: 100%;
+}
+
+.login-container {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+}

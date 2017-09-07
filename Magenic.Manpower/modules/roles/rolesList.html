@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="role in $ctrl.list">
+        <td>
+          {{role.name}}&nbsp;&nbsp;<button title="Edit" type="button" class="btn btn-link btn-xs" ng-disabled="!role.isActive" ng-click="$ctrl.edit(role)"><i class="glyphicon glyphicon-edit"></i></button>
+          <ul class="list-inline">
+            <li><i>-</i></li>
+            <li ng-repeat="perm in role.permissions" class="text-info small">
+              <i>{{perm.name}}<span ng-if="$index < (role.permissions.length - 1)">,</span></i>
+            </li>
+          </ul>
+        </td>
+        <td>
+          <span class="pull-right" title="Toggle Active">
+            <input type="checkbox" data-hook="toggles" ng-model="role.isActive" data-id="role-{{role.id}}" />&nbsp;
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

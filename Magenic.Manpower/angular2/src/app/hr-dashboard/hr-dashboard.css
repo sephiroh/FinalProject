@@ -1,0 +1,13 @@
+.panel-heading.lightseagreen{
+  background-color: lightseagreen;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.panel-heading.cadetblue{
+  background-color: steelblue;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+}

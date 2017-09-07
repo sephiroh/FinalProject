@@ -1,0 +1,47 @@
+﻿<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="app-header">
+        <div class="container">
+            <a ui-sref="home" class="navbar-brand"><span class="glyphicon glyphicon-user"></span> Manpower App</a>
+            <!--<div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>-->
+            <div class="current-user">
+                <div class="pull-right dropdown">
+                    <button ng-show="!!vm.currentUser" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding-right: 20px">{{vm.currentUser}}&nbsp;<span class="caret"></span></button>
+                    <ul class="dropdown-menu" style="cursor:pointer">
+                        <li>
+                            <a ng-show="!!vm.currentUser" ng-click="vm.getMyAccount()" class="dropdown-txt">My Account</a>
+                        </li>
+                        <li>
+                            <a ng-show="!!vm.currentUser" ng-click="vm.logout($event)" class="dropdown-txt">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="app-brand">
+        <div class="container">
+            <img src="/images/W_MagenicLogo.png" /> <div class="app-manila">MANILA</div>
+        </div>
+    </div>
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li ng-repeat="item in vm.menuItems"><a a ui-sref="{{item.name}}">{{item.label}}</a></li>
+        </ul>
+    </div>
+    
+
+    <!--<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+        <ul class="nav navbar-nav pull-right">
+            <li><a>{{vm.currentUser}}</a></li>
+            <li><a ng-show="!!vm.currentUser" ng-click="vm.logout($event)" style="cursor:default">Logout</a></li>
+        </ul>
+    </div>-->
+</nav>
+

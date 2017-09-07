@@ -1,0 +1,20 @@
+﻿<h3>
+    Applicant Levels
+    <span class="pull-right">
+        <button type="button" class="btn btn-xs btn-primary" ng-click="alc.showModal('createApplicantLevel')"><span class="glyphicon glyphicon-plus"></span></button>
+        <button type="button" class="btn btn-xs btn-default" ng.click="alc.getApplicantLevelList()"><span class="glyphicon glyphicon-refresh"></span></button> <!--todo: access the component fucntion-->
+    </span>
+</h3>
+
+<hr />
+
+<applicant-level-list load-list="alc.load"></applicant-level-list>
+
+<shared-modal modalid="'createApplicantLevel'"
+              save-button-label="'Save'"
+              save-button-class="'btn btn-primary'"
+              on-save="alc.createApplicantLevel(data)"
+              on-cancel="alc.resetData()"
+              data="alc.alevel"
+              title="'Create Applicant Level'"
+              body='<applicant-level-form data="$ctrl.data"></applicant-level-form>'></shared-modal>

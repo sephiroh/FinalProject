@@ -1,0 +1,24 @@
+﻿<div>
+    <form (ngSubmit)="cancelReason.form.valid && submitCancellation($event)" #cancelReason="ngForm" novalidate>
+        <app-modal>
+            <div class="app-modal-header">
+                Cancel Reference Number Request
+            </div>
+            <div class="app-modal-body">
+                <div class="row">
+                    <div class="form-group col-lg-12" [ngClass]="{ 'has-error': cancelReason.submitted && !reason.valid }">
+                        <label for="reason">Reason:</label><textarea type="text" name="reason" id="reason" class="form-control" placeholder="Cancellation Reason" [(ngModel)]="refNumReason.reason" #reason="ngModel" required style="resize: none; height: 200px !important;"></textarea>
+                        <div [hidden]="reason.valid || reason.untouched">
+                            <span *ngIf="reason.errors && reason.errors.required" class="help-block">Reason is required</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="app-modal-footer">
+                <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+                <button type="submit" class="btn btn-primary" [disabled]="!cancelReason.form.valid">Submit</button>
+                <!--<button type="button" class="btn btn-primary" (click)="submitCancellation()">Submit</button>-->
+            </div>
+        </app-modal>
+    </form>
+</div>

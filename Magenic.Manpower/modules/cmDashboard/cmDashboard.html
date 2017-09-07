@@ -1,0 +1,25 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+        <th>Project Name</th>
+        <th>Primary Skill</th>
+        <th>Estimated # Of Hires</th>
+        <th>Date Requested</th>
+        <th>Requestor</th>
+        <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="user in $ctrl.list">
+      <td>{{user.lastname}}</td>
+      <td>{{user.firstname}}</td>
+      <td>{{user.email}}</td>
+      <td>
+        <span class="pull-right">
+            <input type="checkbox" data-hook="toggles" ng-model="user.isActive" data-id="{{user.id}}" />&nbsp;
+            <button type="button" class="btn btn-xs btn-info" ng-disabled="!user.isActive" ng-click="$ctrl.edit(user)"><span class="glyphicon glyphicon-pencil"></span></button>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

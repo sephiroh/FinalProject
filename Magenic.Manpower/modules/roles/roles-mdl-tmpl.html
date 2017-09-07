@@ -1,0 +1,14 @@
+<h3>
+  Roles
+  <span class="pull-right">
+    <button type="button" class="btn btn-xs btn-primary" ng-click="vm.create()"><span class="glyphicon glyphicon-plus"></span></button>
+    <button type="button" class="btn btn-xs btn-default" ng-click="vm.refresh()"><span class="glyphicon glyphicon-refresh"></span></button>
+  </span>
+</h3>
+<hr />
+<div class="row">
+  <div class="col-md-12">
+    <roles-list on-edit="vm.edit(role)" event-name="vm.event"></roles-list>
+  </div>
+</div>
+<roles-add-update on-save="vm.save(role)" this-role="vm.thisRole" event="vm.event"></roles-add-update>

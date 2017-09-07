@@ -1,0 +1,53 @@
+﻿<h3>
+    Applicants
+    <span class="pull-right">
+        <button type="button" class="btn btn-xs btn-primary" (click)="openForm()"><span class="glyphicon glyphicon-plus"></span></button>
+        <button type="button" class="btn btn-xs btn-default" (click)="getApplicants()"><span class="glyphicon glyphicon-refresh"></span></button>
+        <!--<button type="button" class="btn btn-xs btn-primary" ng-click="vm.showModal('newPrimarySkill')"><span class="glyphicon glyphicon-plus"></span></button>
+        <button type="button" class="btn btn-xs btn-default" ng-click="vm.refreshCount = vm.refreshCount + 1"><span class="glyphicon glyphicon-refresh"></span></button>-->
+    </span>
+</h3>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <table id="applicantList-table" class="table table-striped table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            <a href="#">
+                                Name
+                            </a>
+                        </th>
+                        <th>
+                            <a href="#">
+                                Email
+                            </a>
+                        </th>
+                        <th>
+                            <a href="#">
+                                Contact Number
+                            </a>
+                        </th>                        
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let applicant of applicants">
+
+                        <td>{{applicant.firstName}} {{applicant.lastName}}</td>
+                        <td>{{applicant.email}}</td>
+                        <td>{{applicant.contactNumber}}</td>                        
+                        <td>                   
+                            <i class="glyphicon glyphicon-pencil" title="edit" style="cursor:pointer;">
+                            </i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

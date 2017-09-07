@@ -1,0 +1,18 @@
+<div class="navbar navbar-inverse navbar-fixed-top app-header">
+    <app-header></app-header>
+</div>
+<div class="container body-content">
+    <div class="container-fluid">
+        <div class="col-sm-12">
+            <a routerLink="/sample" routerLinkActive="active">Sample</a>
+            <a routerLink="/hrdashboard" routerLinkActive="active">Dashboard</a>
+            <a routerLink="/applicants" routerLinkActive="active">Applicants</a>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<div class="navbar-fixed-bottom footer">
+    <footer>
+        <p class="pull-right footer-txt">&copy; 2016 - Magenic Manila, Inc.</p>
+    </footer>
+</div>

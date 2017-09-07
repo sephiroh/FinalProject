@@ -1,0 +1,14 @@
+<h3>
+  Project Management
+  <span class="pull-right">
+    <button type="button" class="btn btn-xs btn-primary" ng-click="vm.create()"><span class="glyphicon glyphicon-plus"></span></button>
+    <button type="button" class="btn btn-xs btn-default" ng-click="vm.refresh()"><span class="glyphicon glyphicon-refresh"></span></button>
+  </span>
+</h3>
+<hr />
+<div class="row">
+  <div class="col-md-12">
+    <project-list on-edit="vm.edit(proj)" event-name="vm.event"></project-list>
+  </div>
+</div>
+<project-add-update on-save="vm.save(proj)" on-cancel="vm.cancel()"  this-project="vm.thisProject" event="vm.event"></project-add-update>

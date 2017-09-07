@@ -1,0 +1,87 @@
+﻿<link rel="stylesheet" href="modules/requestForm/requestForm.css" type="text/css" />
+<h3>Create New Request</h3>
+<hr />
+<ng-form name="requestForm" role="form" novalidate>
+    <div class="row form-group">
+        <div class="col-md-12" ng-class="{ 'has-error': requestForm.project.$dirty && requestForm.project.$error.required }">
+            <select class="form-control" name="project" ng-model="vm.projectId" ng-options="x.id as x.name for x in vm.projects" required>
+                <option value="" selected="selected">Select project</option>
+            </select>
+            <span ng-show="requestForm.project.$dirty && requestForm.project.$error.required" class="help-block">Project is required</span>
+        </div>
+    </div>
+    <hr />
+    <div class="row form-group">
+        <div class="col-md-12" ng-class="{ 'has-error': requestForm.primarySkill.$dirty && requestForm.primarySkill.$error.required }">
+            <label>Primary skill:</label>
+            <div class="radio" ng-repeat="primarySkill in vm.primarySkills">
+                <label><input type="radio" name="primarySkill" ng-model="vm.primarySkill" ng-value="{{primarySkill.id}}" required />{{primarySkill.name}}</label>
+            </div>
+            <span ng-show="requestForm.primarySkill.$dirty && requestForm.primarySkill.$error.required" class="help-block">Primary skill is required</span>
+        </div>
+    </div>
+    <hr />
+    <div class="row form-group">
+        <div class="col-md-6" ng-class="{ 'has-error': requestForm.region.$dirty && requestForm.region.$error.required }">
+            <label>Requesting Region:</label>
+            <select class="form-control" name="region" ng-model="vm.region" ng-options="x.id as x.name for x in vm.regions" required>
+                <option value="" selected="selected">Select Requesting Region</option>
+            </select>
+            <span ng-show="requestForm.region.$dirty && requestForm.region.$error.required" class="help-block">Requesting Region is required</span>
+        </div>
+        <div class="col-md-6" ng-class="{ 'has-error': requestForm.startDate.$dirty && requestForm.startDate.$error.required}">
+            <label>Projected start date:</label>
+            <input class="form-control" type="date" name="startDate" ng-model="vm.startDate" />
+            <span ng-show="requestForm.startDate.$dirty && requestForm.startDate.$error.required" class="help-block">Start date is required</span>
+        </div>
+    </div>
+    <hr />
+    <div class="row form-group">
+        <div class="col-md-12" ng-class="{ 'has-error': requestForm.levelName.$dirty && vm.getNumberOfHires() == 0 }">
+            <label>Estimated number of hires:</label>
+            <div ng-repeat="level in vm.levels">
+                <div class="col-md-6">
+                    <label for="levelName">{{level.name}}:</label>
+                    <input class="form-control" name="levelName" id="levelName" type="number" min="0" value="0" ng-model="vm.numberOfHires[$index]" />
+                </div>
+            </div>
+            <span ng-show="requestForm.levelName.$dirty && vm.getNumberOfHires() == 0" class="help-block">Atleast 1 applicant is required.</span>
+        </div>
+    </div>
+    <hr />
+    <div class="row form-group">
+        <div class="col-md-12" ng-class="{ 'has-error': requestForm.jobDescription.$dirty && requestForm.jobDescription.$error.required}">
+            <label>Job description:</label>
+            <textarea class="form-control" name="jobDescription" ng-model="vm.jobDescription" rows="8" required></textarea>
+            <span ng-show="requestForm.jobDescription.$dirty && requestForm.jobDescription.$error.required" class="help-block">Job description is required</span>
+        </div>
+    </div>
+    <hr />
+    <div class="row form-group">
+        <div class="col-md-12" ng-class="{ 'has-error': requestForm.primaryTechnologies.$dirty && requestForm.primaryTechnologies.$error.required}">
+            <label>Primary technologies needed:</label>
+            <br />
+            <label class="checkbox-inline" ng-repeat="tech in vm.primaryTechnologies">
+                <input type="checkbox" value="{{tech.id}}" check-list="vm.selectedTechnologies">{{tech.name}}<br />
+            </label>
+            <span ng-show="requestForm.primaryTechnology.$dirty && requestForm.primaryTechnology.$error.required" class="help-block">Primary technologies is required</span>
+        </div>
+    </div>
+    <hr />
+    <div class="row form-group">
+        <div class="col-md-12" ng-class="{ 'has-error': requestForm.reasonOfRequest.$dirty && requestForm.reasonOfRequest.$error.required}">
+            <label>Reason of request:</label>
+            <br />
+            <label class="checkbox-inline" ng-repeat="reasonOfRequest in vm.reasonsOfRequest.reasons">
+                <input type="checkbox" value="{{reasonOfRequest}}" check-list="vm.selectedReasons" />{{reasonOfRequest}}<br />
+            </label>
+            <span ng-show="requestForm.reasonOfRequest.$dirty && requestForm.reasonOfRequest.$error.required" class="help-block">Reason of request is required</span>
+        </div>
+    </div>
+    <hr />
+    <div class="row form-group">
+        <div class="col-md-12 pull-right">
+            <button type="submit" ng-disabled="requestForm.$invalid || vm.getNumberOfHires() == 0" ng-click="vm.submit()" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</ng-form>

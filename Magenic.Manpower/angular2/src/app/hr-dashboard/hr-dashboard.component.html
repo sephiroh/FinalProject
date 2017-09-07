@@ -1,0 +1,49 @@
+<div class="panel-group">
+  <div class="col-md-12">
+    <div class="panel panel-default">
+      <div id="cr-head" class="panel-heading lightseagreen">
+        <span class="panel-title">
+          <i class="glyphicon glyphicon-dashboard"></i> Hiring Requests
+        </span>
+      </div>
+      <hr-dashboard-filter (onFilter)="filter($event)"></hr-dashboard-filter>
+      <table id="cr-table" class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Request Date</th>
+            <th>Reference No.</th>
+            <th>Skill</th>
+            <th>Applicant Lvl</th>
+            <th>Project</th>
+            <th>Manager</th>
+            <th>Date Closed</th>
+            <th>Hired Applicant</th>
+            <th>Applicant Start Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let request of requests">
+            <td id="cr-data-requestDate-{{request.requestNumber}}">{{request.requestDate | dateOrNull:"MM-dd-yyyy":"N/A"}}</td>
+            <td id="cr-data-requestNumber-{{request.requestNumber}}">{{request.requestNumber}}&nbsp;
+              <a class="btn-link"><i *ngIf="request.status == 1" class="glyphicon glyphicon-tag text-primary" title="Tag Applicant"></i></a>
+            </td>
+            <td id="cr-data-primarySkillName-{{request.requestNumber}}">{{request.primarySkillName}}</td>
+            <td id="cr-data-applicantLevelName-{{request.requestNumber}}">{{request.applicantLevelName}}</td>
+            <td id="cr-data-projectName-{{request.requestNumber}}">{{request.projectName}}</td>
+            <td id="cr-data-managerName-{{request.requestNumber}}">{{request.managerName}}</td>
+            <td id="cr-data-dateClosed-{{request.requestNumber}}">{{request.dateClosed | dateOrNull:"MM-dd-yyyy":"N/A"}}</td>
+            <td id="cr-data-applicantName-{{request.requestNumber}}">{{request.applicantName}}</td>
+            <td id="cr-data-applicantStartDate-{{request.requestNumber}}">{{request.applicantStartDate | dateOrNull:"MM-dd-yyyy":"N/A"}}</td>
+            <td id="cr-data-status-{{request.requestNumber}}">
+              <i *ngIf="request.status == 1" class="glyphicon glyphicon-phone-alt text-info" title="Open"></i>
+              <i *ngIf="request.status == 2" class="glyphicon glyphicon-tag text-primary" title="Hired"></i>
+              <i *ngIf="request.status == 3" class="glyphicon glyphicon-remove-circle text-danger" title="Closed"></i>
+            </td>
+          </tr>
+          <tr  *ngIf="requests && requests.length == 0"><td colspan="10">No records to display.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

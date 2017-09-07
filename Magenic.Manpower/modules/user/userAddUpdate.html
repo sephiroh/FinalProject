@@ -1,0 +1,66 @@
+﻿<div class="modal fade" data-hook="addEditModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">            
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{{ran.addEditModalLabel}}</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-container" name="userForm" role="form" novalidate>
+                    <div class="row form-group">
+                        <div class="col-md-12" ng-class="{ 'has-error': userForm.firstName.$dirty && userForm.firstName.$error.required }">
+                            <label for="firstName">First Name:</label>
+                            <input class="form-control" name="firstName" type="text" ng-model="ran.user.FirstName" required />
+                            <span ng-show="userForm.firstName.$dirty && userForm.firstName.$error.required" class="help-block">First name is required</span>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row form-group">
+                        <div class="col-md-12" ng-class="{ 'has-error': userForm.lastName.$dirty && userForm.lastName.$error.required }">
+                            <label for="lastName">Last Name:</label>
+                            <input class="form-control" name="lastName" type="text" ng-model="ran.user.LastName" required />
+                            <span ng-show="userForm.lastName.$dirty && userForm.lastName.$error.required" class="help-block">Last name is required</span>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row form-group">
+                        <div class="col-md-12" ng-class="{ 'has-error': userForm.roles.$dirty && userForm.roles.$error.required }">
+                            <label for="roles">Role:</label>
+                            <select class="form-control" name="roles" ng-model="ran.user.RoleId" ng-options="role.id as role.name for role in ran.roles" required>
+                                <option value="" selected="selected">Select a role</option>
+                            </select>
+                            <span ng-show="userForm.roles.$dirty && userForm.roles.$error.required" class="help-block">Please select a role</span>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row form-group">
+                        <div class="col-md-12" ng-class="{ 'has-error': userForm.email.$dirty && userForm.email.$error.required || userForm.email.$error.email }">
+                            <label for="email">Email:</label>
+                            <br />
+                            <input class="form-control" name="email" type="email" ng-model="ran.user.Email" required />
+                            <span ng-show="userForm.email.$dirty && userForm.email.$error.required" class="help-block">Email is required</span>
+                            <span ng-show="userForm.email.$error.email" class="help-block">Invalid email</span>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row form-group">
+                        <div class="col-md-12" ng-class="{ 'has-error': userForm.contactNumber.$dirty && userForm.contactNumber.$error.required }">
+                            <label for="contactNumber">Contact No.:</label>
+                            <br />
+                            <input class="form-control" name="contactNumber" type="text" ng-model="ran.user.ContactNumber" required />
+                            <span ng-show="userForm.contactNumber.$dirty && userForm.contactNumber.$error.required" class="help-block">Contact number is required</span>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row form-group">
+                        <div class="col-md-12 pull-right">
+                            <input type="submit" ng-disabled="userForm.$invalid" ng-click="ran.onAddUpdate(userForm)" class="btn btn-primary" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

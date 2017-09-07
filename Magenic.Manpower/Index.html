@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html ng-app="manpowerApp">
+<head>
+    <title>Manpower App</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Styles -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"  />
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/toaster.css" rel="stylesheet" />
+    <!--<link href="css/side-menu.css" rel="stylesheet" />-->
+    <link href="css/bootstrap2-toggle.min.css" rel="stylesheet" />
+
+    <!-- Vendor -->
+    <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/angular.min.js"></script>
+    <script type="text/javascript" src="/js/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="/js/underscore.min.js"></script>
+    <script type="text/javascript" src="/js/angular-underscore.js"></script>
+    <script type="text/javascript" src="/js/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="/js/angular-cookies.min.js"></script>
+    <script type="text/javascript" src="/js/angular-sanitize.min.js"></script>
+    <script src="js/bootstrap2-toggle.min.js"></script>
+
+    <!--  -->
+    <script type="text/javascript" src="js/angular-sanitize.min.js"></script>
+    <script src="/js/side-menu.js"></script>
+    <script src="/js/angular-animate.js"></script>
+    <script src="/js/toaster.js"></script>
+
+    <!-- Generic Configuration -->
+    <script type="text/javascript" src="/js/mp-module.js"></script>
+    <script type="text/javascript" src="/js/mp-configRoute.js"></script>
+    <script type="text/javascript" src="/js/mp-constants.js"></script>
+    <script type="text/javascript" src="/js/xhr.js"></script>
+
+    <script type="text/javascript" src="/modules/shared/shared-mdl.js"></script>
+    <script type="text/javascript" src="/modules/shared/sharedModal.js"></script>
+
+    <script type="text/javascript" src="/modules/common/session.js"></script>
+    <script type="text/javascript" src="/modules/common/accessValidator.js"></script>
+    <script type="text/javascript" src="/modules/common/helper.js"></script>
+    <script type="text/javascript" src="/modules/common/lookup.js"></script>
+
+    <!-- Dashboard -->
+    <script type="text/javascript" src="/modules/dashboard/sideNav.js"></script>
+    <script type="text/javascript" src="/modules/dashboard/layoutHeader.js"></script>
+    <script type="text/javascript" src="/modules/dashboard/layoutFooter.js"></script>
+
+    <!-- Request Form -->
+    <script type="text/javascript" src="/modules/requestForm/requestForm-mdl.js"></script>
+    <script type="text/javascript" src="/modules/requestForm/checkList.js"></script>
+    <script type="text/javascript" src="/modules/requestForm/requestForm-context.js"></script>
+    <script type="text/javascript" src="/modules/requestForm/requestForm-ctrl.js"></script>
+    <script type="text/javascript" src="/modules/requestForm/requestForm-svc.js"></script>
+
+    <!-- LogIn -->
+    <script type="text/javascript" src="/modules/login/login-mdl.js"></script>
+    <script type="text/javascript" src="/modules/login/login-context.js"></script>
+    <script type="text/javascript" src="/modules/login/login-ctrl.js"></script>
+
+    <!-- Primary Skills -->
+    <script type="text/javascript" src="/modules/primarySkills/primarySkills-mdl.js"></script>
+    <script type="text/javascript" src="/modules/primarySkills/primarySkills-context.js"></script>
+    <script type="text/javascript" src="/modules/primarySkills/primarySkills-ctrl.js"></script>
+    <script type="text/javascript" src="/modules/primarySkills/primarySkillsList.component.js"></script>
+    <script type="text/javascript" src="/modules/primarySkills/primarySkillsListForm.js"></script>
+
+  
+    <!--  -->
+    <script type="text/javascript" src="/modules/sample/sample-mdl.js"></script>
+    <script type="text/javascript" src="/modules/sample/sample-context.js"></script>
+    <script type="text/javascript" src="/modules/sample/sample-svc.js"></script>
+    <script type="text/javascript" src="/modules/sample/sample-ctrl.js"></script>
+    <script type="text/javascript" src="/modules/sample/sampleList.js"></script>
+
+    <!-- Roles -->
+    <script src="modules/roles/roles-mdl.js"></script>
+    <script src="modules/roles/roles-context.js"></script>
+    <script src="modules/roles/roles-ctrl.js"></script>
+    <script src="modules/roles/rolesList.js"></script>
+    <script src="modules/roles/rolesAddUpdate.js"></script>
+
+    <!-- User Module -->
+    <script type="text/javascript" src="modules/user/user-mdl.js"></script>
+    <script type="text/javascript" src="modules/user/user-context.js"></script>
+    <script type="text/javascript" src="modules/user/user-ctrl.js"></script>
+    <script type="text/javascript" src="modules/user/userList.js"></script>
+    <script type="text/javascript" src="modules/user/userAddUpdate.js"></script>
+
+    <!-- Technology -->
+    <script type="text/javascript" src="/modules/technologies/technologies-mdl.js"></script>
+    <script type="text/javascript" src="/modules/technologies/technologies-ctrl.js"></script>
+    <script type="text/javascript" src="/modules/technologies/techDetails-mdl.js"></script>
+    <script type="text/javascript" src="/modules/technologies/techDetails-context.js"></script>
+    <script type="text/javascript" src="/modules/technologies/techDetails-ctrl.js"></script>
+    <script type="text/javascript" src="/modules/technologies/techList-component.js"></script>
+    <script type="text/javascript" src="/modules/technologies/technologyDetailsForm.js"></script>
+
+    <!-- My Account -->
+    <script type="text/javascript" src="modules/account/account-mdl.js"></script>
+    <script type="text/javascript" src="modules/account/account-ctrl.js"></script>
+    <script type="text/javascript" src="modules/account/account-context.js"></script>
+    <script type="text/javascript" src="modules/account/passwordUpdate.js"></script>
+    
+    <!-- Poject Management -->
+    <script src="modules/projectManagement/pm-mdl.js"></script>
+    <script src="modules/projectManagement/pm-context.js"></script>
+    <script src="modules/projectManagement/pm-ctrl.js"></script>
+    <script src="modules/projectManagement/pmList.js"></script>
+    <script src="modules/projectManagement/pmAddUpdate.js"></script>
+
+    <!-- Applicant Level Management -->
+    <script src="modules/applicantLevelManagement/applicantLevel-mdl.js"></script>
+    <script src="modules/applicantLevelManagement/applicantLevel-context.js"></script>
+    <script src="modules/applicantLevelManagement/applicantLevel-ctrl.js"></script>
+    <script src="modules/applicantLevelManagement/applicantLevelList-component.js"></script>
+    <script src="modules/applicantLevelManagement/applicantLevelForm.js"></script>
+
+</head>
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top app-header">
+    <layout-header></layout-header>
+  </div>
+  <div class="container body-content">
+    <div class="container-fluid">
+      <!--<div class="col-sm-3">
+        <div class="row">
+          <side-nav></side-nav>
+        </div>
+      </div>-->
+     <div class="row col-sm-12">
+        <toaster-container></toaster-container>
+        <ui-view></ui-view>
+      </div>
+    </div>
+  </div>
+  <div class="navbar-fixed-bottom footer">
+    <footer>
+      <p class="pull-right footer-txt">&copy; 2016 - Magenic Manila, Inc.</p>
+    </footer>
+  </div>
+</body>
+</html>

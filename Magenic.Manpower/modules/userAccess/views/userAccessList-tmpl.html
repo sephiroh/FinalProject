@@ -1,0 +1,35 @@
+﻿<div id="userAccessListComponent">
+    <div class="">
+        <input style="width: 200px;" /> <button>Search</button>
+    </div>
+    <div class="" style="min-width:98% !important;overflow-x:auto; padding: 5px 5px 5px 0px; ">
+        <table>
+            <thead>
+            <tr>
+                <th></th>
+                <th>User Name</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in vm.users" style="text-align: left;">
+                <td><input type="checkbox"/></td>
+                <td>{{user.Name}}</td>
+                <td><a href="">Edit</a></td>
+                <td><a href="">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="">
+        <button ng-click="vm.clickMe()" data-toggle="modal" data-target="#exampleModal">Add New</button>
+    </div>
+
+    <div>
+        <div ng-include="vm.userView"></div>
+    </div>
+</div>
+
+
+

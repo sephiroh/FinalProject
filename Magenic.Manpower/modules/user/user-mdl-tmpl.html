@@ -1,0 +1,11 @@
+<h3>
+  Users
+  <span class="pull-right">
+    <button type="button" class="btn btn-xs btn-primary" ng-click="vm.create()"><span class="glyphicon glyphicon-plus"></span></button>
+    <button type="button" class="btn btn-xs btn-default" ng-click="vm.refresh()"><span class="glyphicon glyphicon-refresh"></span></button>
+  </span>
+</h3>
+<hr />
+<user-list on-edit="vm.edit(user)" this-user="vm.thisUser"></user-list>
+
+<user-add-update on-save="vm.save(user)" this-user="vm.thisUser" roles-lov="vm.rolesLov" is-new="vm.isNew"></user-add-update>

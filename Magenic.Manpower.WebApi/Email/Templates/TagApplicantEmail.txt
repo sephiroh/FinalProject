@@ -1,0 +1,7 @@
+﻿Good day!
+
+##Requestor## has ##EstimateHires## job request for project ##ProjectName##.
+
+For more info, please login ##ManpowerAppUrl##.
+
+Thank you!

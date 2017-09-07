@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B1A629FE-4796-402F-8972-C66FC63A88B9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Magenic.Manpower.v2</RootNamespace>
+    <AssemblyName>Magenic.Manpower.v2</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>2.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=4.1.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.4.1.1\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Moq, Version=4.7.99.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.7.99\lib\net45\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="e2e\app.e2e-spec.ts" />
+    <TypeScriptCompile Include="src\app\admin-projectManagement\pm-common.function.ts" />
+    <TypeScriptCompile Include="src\app\admin-projectManagement\pm-form.component.ts" />
+    <TypeScriptCompile Include="src\app\admin-projectManagement\pm-list.component.ts" />
+    <TypeScriptCompile Include="src\app\admin-projectManagement\pm-modal.ts" />
+    <TypeScriptCompile Include="src\app\admin-projectManagement\pm-routing.ts" />
+    <TypeScriptCompile Include="src\app\admin-projectManagement\pm.component.ts" />
+    <TypeScriptCompile Include="src\app\admin-projectManagement\pm.model.ts" />
+    <TypeScriptCompile Include="src\app\admin-projectManagement\pm.module.ts" />
+    <TypeScriptCompile Include="e2e\hr-dashboard.e2e-spec.ts" />
+    <TypeScriptCompile Include="src\app\app-header\app-header.component.ts" />
+    <TypeScriptCompile Include="src\app\app-login\app-login.component.ts" />
+    <TypeScriptCompile Include="src\app\app-login\app-login.service.ts" />
+    <TypeScriptCompile Include="src\app\app-login\app-login.module.ts" />
+    <TypeScriptCompile Include="src\app\app-login\userToken.model.ts" />
+    <TypeScriptCompile Include="src\app\app-router\app-routing.module.ts" />
+    <TypeScriptCompile Include="src\app\app.component.spec.ts" />
+    <TypeScriptCompile Include="src\app\app.component.ts" />
+    <TypeScriptCompile Include="src\app\app.module.ts" />
+    <TypeScriptCompile Include="src\app\cm-dashboard\cm-dashboard-filter\cm-dashboard-filter.component.ts" />
+    <TypeScriptCompile Include="src\app\cm-dashboard\cm-dashboard-tag\cm-dashboard-reason.component.ts" />
+    <TypeScriptCompile Include="src\app\cm-dashboard\cm-dashboard.component.ts" />
+    <TypeScriptCompile Include="src\app\cm-dashboard\cm-dashboard.module.ts" />
+    <TypeScriptCompile Include="src\app\cm-request\cm-request.component.ts" />
+    <TypeScriptCompile Include="src\app\cm-request\cm-request.service.ts" />
+    <TypeScriptCompile Include="src\app\cm-dashboard\cm-dashboard.service.ts" />
+    <TypeScriptCompile Include="src\app\cm-dashboard\cm-dashboard.service.ts" />
+    <TypeScriptCompile Include="src\app\common\app-emitter.service.ts" />
+    <TypeScriptCompile Include="src\app\common\app-modal.ts" />
+    <TypeScriptCompile Include="src\app\common\common.module.ts" />
+    <TypeScriptCompile Include="src\app\common\date-or-null.module.ts" />
+    <TypeScriptCompile Include="src\app\common\logged-user.service.ts" />
+    <TypeScriptCompile Include="src\app\common\auth.guard.ts" />
+    <TypeScriptCompile Include="src\app\common\date-or-null.pipe.ts" />
+    <TypeScriptCompile Include="src\app\common\default-request-options.service.ts" />
+    <TypeScriptCompile Include="src\app\common\global-settings.service.ts" />
+    <TypeScriptCompile Include="src\app\common\jquery.d.ts" />
+    <TypeScriptCompile Include="src\app\common\lookup.service.ts" />
+    <TypeScriptCompile Include="src\app\common\validators\form.validator.ts" />
+    <TypeScriptCompile Include="src\app\hr-applicants\applicant-form.component.ts" />
+    <TypeScriptCompile Include="src\app\hr-applicants\applicant-list.component.ts" />
+    <TypeScriptCompile Include="src\app\hr-applicants\applicant.model.ts" />
+    <TypeScriptCompile Include="src\app\hr-applicants\applicants.service.ts" />
+    <TypeScriptCompile Include="src\app\hr-applicants\hr-applicants-tag\applicant-references.component.ts" />
+    <TypeScriptCompile Include="src\app\hr-applicants\hr-applicants.module.ts" />
+    <TypeScriptCompile Include="src\app\hr-dashboard\hr-dashboard-filter\hr-dashboard-filter.component.ts" />
+    <TypeScriptCompile Include="src\app\hr-dashboard\hr-dashboard-tag\hr-applicant-list.component.ts" />
+    <TypeScriptCompile Include="src\app\hr-dashboard\hr-dashboard.component.ts" />
+    <TypeScriptCompile Include="src\app\hr-dashboard\hr-dashboard.module.ts" />
+    <TypeScriptCompile Include="src\app\hr-dashboard\hr-dashboard.service.ts" />
+    <TypeScriptCompile Include="src\app\sample\sample.component.ts" />
+    <TypeScriptCompile Include="src\main.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="e2e\tsconfig.json" />
+    <Content Include="karma.conf.js" />
+    <Content Include="protractor.config.js" />
+    <Content Include="src\app\admin-projectManagement\pm-form.component.html" />
+    <Content Include="src\app\admin-projectManagement\pm-list.component.html" />
+    <TypeScriptCompile Include="src\app\admin-projectManagement\pm.service.ts" />
+    <Content Include="src\app\app-header\app-header.component.html" />
+    <Content Include="src\app\app-login\app-login.component.html" />
+    <Content Include="src\app\app-login\app-login.css" />
+    <Content Include="src\app\app.component.html" />
+    <Content Include="src\app\cm-dashboard\cm-dashboard-filter\cm-dashboard-filter.component.html" />
+    <Content Include="src\app\cm-dashboard\cm-dashboard-tag\cm-dashboard-reason.component.html" />
+    <Content Include="src\app\cm-dashboard\cm-dashboard.component.html" />
+    <Content Include="src\app\cm-dashboard\cm-dashboard.css" />
+    <Content Include="src\app\cm-request\cm-request.component.html" />
+    <Content Include="src\app\cm-request\cm-request.css" />
+    <Content Include="src\app\hr-applicants\applicant-form.component.html" />
+    <Content Include="src\app\hr-applicants\applicant-list.component.html" />
+    <Content Include="src\app\hr-applicants\hr-applicants-tag\applicant-references.component.html" />
+    <Content Include="src\app\hr-dashboard\hr-dashboard-filter\hr-dashboard-filter.component.html" />
+    <Content Include="src\app\hr-dashboard\hr-dashboard-tag\hr-applicant-list.component.html" />
+    <Content Include="src\app\hr-dashboard\hr-dashboard.component.html" />
+    <Content Include="src\app\hr-dashboard\hr-dashboard.css" />
+    <Content Include="src\app\sample\sample.component.html" />
+    <Content Include="src\css\bootstrap-theme.css" />
+    <Content Include="src\css\bootstrap-theme.min.css" />
+    <Content Include="src\css\bootstrap.css" />
+    <Content Include="src\css\bootstrap.min.css" />
+    <Content Include="src\css\bootstrap2-toggle.css" />
+    <Content Include="src\css\bootstrap2-toggle.min.css" />
+    <Content Include="src\css\site.css" />
+    <Content Include="src\css\style.css" />
+    <Content Include="src\css\toaster.css" />
+    <Content Include="src\favicon.ico" />
+    <Content Include="src\images\check.png" />
+    <Content Include="src\images\cross.jpeg" />
+    <Content Include="src\images\magenic_weavetexture_50.png" />
+    <Content Include="src\images\W_MagenicLogo.png" />
+    <Content Include="src\index.html" />
+    <Content Include="src\systemjs.config.extras.js" />
+    <Content Include="src\systemjs.config.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="src\tsconfig.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".editorconfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bs-config.e2e.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bs-config.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReadMe.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tslint.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\app\app-data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60354</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:60354/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

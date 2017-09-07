@@ -1,0 +1,49 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="app-header">
+        <div class="container">
+            <a ui-sref="home" class="navbar-brand"><span class="glyphicon glyphicon-user"></span> Manpower App</a>
+            <!--<div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1"></button>
+            </div>-->
+            <!--<div class="current-user">
+                <div class="pull-right">
+                    <a style="cursor:pointer; padding-right:20px; font-weight:bold;">
+                        Jhon Doe
+                    </a>
+                    <a style="cursor:default">Logout</a>
+                </div>
+            </div>-->
+            <div class="current-user" *ngIf="showCurrentUser">
+                <div class="pull-right dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="padding-right: 20px">{{userName}}&nbsp;<span class="caret"></span></button>
+                    <ul class="dropdown-menu" style="cursor:pointer">
+                        <li>
+                            <a class="dropdown-txt">My Account</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-txt" (click)="logoutUser()">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="app-brand">
+        <div class="container">
+            <img src="/images/W_MagenicLogo.png" /> <div class="app-manila">MANILA</div>
+        </div>
+    </div>
+    <div class="container" *ngIf="showCurrentUser">
+        <ul class="nav navbar-nav">
+            <li *ngFor="let route of routes"><a routerLink="/{{route.path}}" routerLinkActive="active">{{route.data.title}}</a></li>
+        </ul>
+    </div>
+
+
+    <!--<div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+        <ul class="nav navbar-nav pull-right">
+            <li><a>{{vm.currentUser}}</a></li>
+            <li><a ng-show="!!vm.currentUser" ng-click="vm.logout($event)" style="cursor:default">Logout</a></li>
+        </ul>
+    </div>-->
+</nav>

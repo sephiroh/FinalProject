@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1e52f0294304482f8a5c6d14b00f368c" Name="Diagram1">
+        <EntityTypeShape EntityType="MagenicManpowerRecruitmentModel.ApplicantLevel" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagenicManpowerRecruitmentModel.MagenicRegion" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagenicManpowerRecruitmentModel.ManpowerRequest" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagenicManpowerRecruitmentModel.Permission" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagenicManpowerRecruitmentModel.PrimarySkill" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagenicManpowerRecruitmentModel.Role" Width="1.5" PointX="5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagenicManpowerRecruitmentModel.Status" Width="1.5" PointX="6" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagenicManpowerRecruitmentModel.sysdiagram" Width="1.5" PointX="9.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagenicManpowerRecruitmentModel.Technology" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagenicManpowerRecruitmentModel.User" Width="1.5" PointX="7.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagenicManpowerRecruitmentModel.ReferenceNumber" Width="1.5" PointX="8.375" PointY="4.75" IsExpanded="true" />
+        <AssociationConnector Association="MagenicManpowerRecruitmentModel.FK_ManpowerRequest_ApplicantLevel" ManuallyRouted="false" />
+        <AssociationConnector Association="MagenicManpowerRecruitmentModel.FK_ManpowerRequest_MagenicRegion" ManuallyRouted="false" />
+        <AssociationConnector Association="MagenicManpowerRecruitmentModel.FK_ManpowerRequest_PrimarySkill" ManuallyRouted="false" />
+        <AssociationConnector Association="MagenicManpowerRecruitmentModel.FK_ReferenceNumber_ManpowerRequest" ManuallyRouted="false" />
+        <AssociationConnector Association="MagenicManpowerRecruitmentModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="MagenicManpowerRecruitmentModel.FK_ReferenceNumber_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="MagenicManpowerRecruitmentModel.ManpowerRequestTechnology" ManuallyRouted="false" />
+        <AssociationConnector Association="MagenicManpowerRecruitmentModel.RolePermission" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MagenicManpowerRecruitmentModel.Applicant" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="MagenicManpowerRecruitmentModel.Project" Width="1.5" PointX="10.75" PointY="1" />
+        <AssociationConnector Association="MagenicManpowerRecruitmentModel.FK_ReferenceNumber_ApplicantLevel" />
+        <AssociationConnector Association="MagenicManpowerRecruitmentModel.FK_ManpowerRequest_Project" />
+        <AssociationConnector Association="MagenicManpowerRecruitmentModel.FK_ReferenceNumber_Status1" />
+        <EntityTypeShape EntityType="MagenicManpowerRecruitmentModel.HrDashboardView" Width="1.5" PointX="0.75" PointY="11.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

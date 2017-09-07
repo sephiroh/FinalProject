@@ -1,0 +1,950 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MagenicManpowerRecruitmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Applicant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ContactNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BriefDescription" Type="nvarchar(max)" />
+          <Property Name="ResumeFile" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="ApplicantLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MagenicRegion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ManpowerRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="PrimarySkillID" Type="int" Nullable="false" />
+          <Property Name="RegionID" Type="int" Nullable="false" />
+          <Property Name="ProjectedStartDate" Type="datetime" Nullable="false" />
+          <Property Name="JobDescription" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="RequestedBy" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="IsForReplacement" Type="bit" Nullable="false" />
+          <Property Name="IsForAdditionalResource" Type="bit" Nullable="false" />
+          <Property Name="IsChangeRequest" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ManpowerRequestTechnology">
+          <Key>
+            <PropertyRef Name="ManpowerRequestID" />
+            <PropertyRef Name="TechnologyID" />
+          </Key>
+          <Property Name="ManpowerRequestID" Type="int" Nullable="false" />
+          <Property Name="TechnologyID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PrimarySkill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ReferenceNumber">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ReferenceString" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LevelId" Type="int" Nullable="false" />
+          <Property Name="ManpowerRequestId" Type="int" Nullable="false" />
+          <Property Name="StatusID" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RolePermission">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="PermissionId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="PermissionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Technology">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PasswordHash" Type="binary" MaxLength="32" Nullable="false" />
+          <Property Name="Salt" Type="binary" MaxLength="16" Nullable="false" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MagenicManpowerDB.dbo.HrDashboardView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="HrDashboardView">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="RequestDate" Type="datetime" Nullable="false" />
+          <Property Name="RequestNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PrimarySkillName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApplicantLevelName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProjectName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ManagerName" Type="nvarchar" MaxLength="201" Nullable="false" />
+          <Property Name="ApplicantName" Type="nvarchar" MaxLength="201" Nullable="false" />
+          <Property Name="ApplicantStartDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ManpowerRequest_MagenicRegion">
+          <End Role="MagenicRegion" Type="Self.MagenicRegion" Multiplicity="1" />
+          <End Role="ManpowerRequest" Type="Self.ManpowerRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MagenicRegion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManpowerRequest">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManpowerRequest_PrimarySkill">
+          <End Role="PrimarySkill" Type="Self.PrimarySkill" Multiplicity="1" />
+          <End Role="ManpowerRequest" Type="Self.ManpowerRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrimarySkill">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManpowerRequest">
+              <PropertyRef Name="PrimarySkillID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManpowerRequest_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="ManpowerRequest" Type="Self.ManpowerRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManpowerRequest">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManpowerRequestTechnology_ManpowerRequest">
+          <End Role="ManpowerRequest" Type="Self.ManpowerRequest" Multiplicity="1" />
+          <End Role="ManpowerRequestTechnology" Type="Self.ManpowerRequestTechnology" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManpowerRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManpowerRequestTechnology">
+              <PropertyRef Name="ManpowerRequestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManpowerRequestTechnology_Technology">
+          <End Role="Technology" Type="Self.Technology" Multiplicity="1" />
+          <End Role="ManpowerRequestTechnology" Type="Self.ManpowerRequestTechnology" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Technology">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManpowerRequestTechnology">
+              <PropertyRef Name="TechnologyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceNumber_ApplicantLevel">
+          <End Role="ApplicantLevel" Type="Self.ApplicantLevel" Multiplicity="1" />
+          <End Role="ReferenceNumber" Type="Self.ReferenceNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicantLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReferenceNumber">
+              <PropertyRef Name="LevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceNumber_ManpowerRequest">
+          <End Role="ManpowerRequest" Type="Self.ManpowerRequest" Multiplicity="1" />
+          <End Role="ReferenceNumber" Type="Self.ReferenceNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManpowerRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReferenceNumber">
+              <PropertyRef Name="ManpowerRequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceNumber_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="ReferenceNumber" Type="Self.ReferenceNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReferenceNumber">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolePermission_Permission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+          <End Role="RolePermission" Type="Self.RolePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolePermission">
+              <PropertyRef Name="PermissionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolePermission_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="RolePermission" Type="Self.RolePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolePermission">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MagenicManpowerRecruitmentModelStoreContainer">
+          <EntitySet Name="Applicant" EntityType="Self.Applicant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ApplicantLevel" EntityType="Self.ApplicantLevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MagenicRegion" EntityType="Self.MagenicRegion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ManpowerRequest" EntityType="Self.ManpowerRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ManpowerRequestTechnology" EntityType="Self.ManpowerRequestTechnology" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrimarySkill" EntityType="Self.PrimarySkill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReferenceNumber" EntityType="Self.ReferenceNumber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolePermission" EntityType="Self.RolePermission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Technology" EntityType="Self.Technology" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HrDashboardView" EntityType="Self.HrDashboardView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [HrDashboardView].[Id] AS [Id], 
+    [HrDashboardView].[RequestDate] AS [RequestDate], 
+    [HrDashboardView].[RequestNumber] AS [RequestNumber], 
+    [HrDashboardView].[PrimarySkillName] AS [PrimarySkillName], 
+    [HrDashboardView].[ApplicantLevelName] AS [ApplicantLevelName], 
+    [HrDashboardView].[ProjectName] AS [ProjectName], 
+    [HrDashboardView].[ManagerName] AS [ManagerName], 
+    [HrDashboardView].[ApplicantName] AS [ApplicantName], 
+    [HrDashboardView].[ApplicantStartDate] AS [ApplicantStartDate], 
+    [HrDashboardView].[Status] AS [Status]
+    FROM [dbo].[HrDashboardView] AS [HrDashboardView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ManpowerRequest_MagenicRegion" Association="Self.FK_ManpowerRequest_MagenicRegion">
+            <End Role="MagenicRegion" EntitySet="MagenicRegion" />
+            <End Role="ManpowerRequest" EntitySet="ManpowerRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManpowerRequest_PrimarySkill" Association="Self.FK_ManpowerRequest_PrimarySkill">
+            <End Role="PrimarySkill" EntitySet="PrimarySkill" />
+            <End Role="ManpowerRequest" EntitySet="ManpowerRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManpowerRequest_Project" Association="Self.FK_ManpowerRequest_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ManpowerRequest" EntitySet="ManpowerRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManpowerRequestTechnology_ManpowerRequest" Association="Self.FK_ManpowerRequestTechnology_ManpowerRequest">
+            <End Role="ManpowerRequest" EntitySet="ManpowerRequest" />
+            <End Role="ManpowerRequestTechnology" EntitySet="ManpowerRequestTechnology" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManpowerRequestTechnology_Technology" Association="Self.FK_ManpowerRequestTechnology_Technology">
+            <End Role="Technology" EntitySet="Technology" />
+            <End Role="ManpowerRequestTechnology" EntitySet="ManpowerRequestTechnology" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceNumber_ApplicantLevel" Association="Self.FK_ReferenceNumber_ApplicantLevel">
+            <End Role="ApplicantLevel" EntitySet="ApplicantLevel" />
+            <End Role="ReferenceNumber" EntitySet="ReferenceNumber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceNumber_ManpowerRequest" Association="Self.FK_ReferenceNumber_ManpowerRequest">
+            <End Role="ManpowerRequest" EntitySet="ManpowerRequest" />
+            <End Role="ReferenceNumber" EntitySet="ReferenceNumber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceNumber_Status" Association="Self.FK_ReferenceNumber_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="ReferenceNumber" EntitySet="ReferenceNumber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolePermission_Permission" Association="Self.FK_RolePermission_Permission">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="RolePermission" EntitySet="RolePermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolePermission_Role" Association="Self.FK_RolePermission_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="RolePermission" EntitySet="RolePermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MagenicManpowerRecruitmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ApplicantLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ManpowerRequests" Relationship="Self.FK_ManpowerRequest_ApplicantLevel" FromRole="ApplicantLevel" ToRole="ManpowerRequest" />
+          <NavigationProperty Name="ReferenceNumbers" Relationship="MagenicManpowerRecruitmentModel.FK_ReferenceNumber_ApplicantLevel" FromRole="ApplicantLevel" ToRole="ReferenceNumber" />
+        </EntityType>
+        <EntityType Name="MagenicRegion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ManpowerRequests" Relationship="Self.FK_ManpowerRequest_MagenicRegion" FromRole="MagenicRegion" ToRole="ManpowerRequest" />
+        </EntityType>
+        <EntityType Name="ManpowerRequest">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PrimarySkillID" Type="Int32" Nullable="false" />
+          <Property Name="RegionID" Type="Int32" Nullable="false" />
+          <Property Name="DesiredApplicantLevelID" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfHires" Type="Int32" Nullable="false" />
+          <Property Name="ProjectedStartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="JobDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RequestedBy" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ApplicantLevel" Relationship="Self.FK_ManpowerRequest_ApplicantLevel" FromRole="ManpowerRequest" ToRole="ApplicantLevel" />
+          <NavigationProperty Name="MagenicRegion" Relationship="Self.FK_ManpowerRequest_MagenicRegion" FromRole="ManpowerRequest" ToRole="MagenicRegion" />
+          <NavigationProperty Name="PrimarySkill" Relationship="Self.FK_ManpowerRequest_PrimarySkill" FromRole="ManpowerRequest" ToRole="PrimarySkill" />
+          <NavigationProperty Name="ReferenceNumbers" Relationship="Self.FK_ReferenceNumber_ManpowerRequest" FromRole="ManpowerRequest" ToRole="ReferenceNumber" />
+          <NavigationProperty Name="Technologies" Relationship="Self.ManpowerRequestTechnology" FromRole="ManpowerRequest" ToRole="Technology" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="IsForReplacement" Type="Boolean" Nullable="false" />
+          <Property Name="IsForAdditionalResource" Type="Boolean" Nullable="false" />
+          <Property Name="IsChangeRequest" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="MagenicManpowerRecruitmentModel.FK_ManpowerRequest_Project" FromRole="ManpowerRequest" ToRole="Project" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Roles" Relationship="Self.RolePermission" FromRole="Permission" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="PrimarySkill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ManpowerRequests" Relationship="Self.FK_ManpowerRequest_PrimarySkill" FromRole="PrimarySkill" ToRole="ManpowerRequest" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+          <NavigationProperty Name="Permissions" Relationship="Self.RolePermission" FromRole="Role" ToRole="Permission" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ReferenceNumbers" Relationship="Self.FK_ReferenceNumber_Status" FromRole="Status" ToRole="ReferenceNumber" />
+          <NavigationProperty Name="ReferenceNumbers1" Relationship="MagenicManpowerRecruitmentModel.FK_ReferenceNumber_Status1" FromRole="Status" ToRole="ReferenceNumber" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Technology">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ManpowerRequests" Relationship="Self.ManpowerRequestTechnology" FromRole="Technology" ToRole="ManpowerRequest" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lastname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="ContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+          <Property Name="PasswordHash" Type="Binary" Nullable="false" MaxLength="32" FixedLength="true" />
+          <Property Name="Salt" Type="Binary" Nullable="false" MaxLength="16" FixedLength="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReferenceNumber">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ReferenceString" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" Nullable="true" />
+          <Property Name="ManpowerRequestId" Type="Int32" Nullable="false" />
+          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ManpowerRequest" Relationship="MagenicManpowerRecruitmentModel.FK_ReferenceNumber_ManpowerRequest" FromRole="ReferenceNumber" ToRole="ManpowerRequest" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_ReferenceNumber_Status" FromRole="ReferenceNumber" ToRole="Status" />
+          <Property Name="LevelId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ApplicantLevel" Relationship="MagenicManpowerRecruitmentModel.FK_ReferenceNumber_ApplicantLevel" FromRole="ReferenceNumber" ToRole="ApplicantLevel" />
+          <NavigationProperty Name="Status1" Relationship="MagenicManpowerRecruitmentModel.FK_ReferenceNumber_Status1" FromRole="ReferenceNumber" ToRole="Status" />
+        </EntityType>
+        <Association Name="FK_ManpowerRequest_ApplicantLevel">
+          <End Role="ApplicantLevel" Type="Self.ApplicantLevel" Multiplicity="1" />
+          <End Role="ManpowerRequest" Type="Self.ManpowerRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicantLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManpowerRequest">
+              <PropertyRef Name="DesiredApplicantLevelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManpowerRequest_MagenicRegion">
+          <End Role="MagenicRegion" Type="Self.MagenicRegion" Multiplicity="1" />
+          <End Role="ManpowerRequest" Type="Self.ManpowerRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MagenicRegion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManpowerRequest">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManpowerRequest_PrimarySkill">
+          <End Role="PrimarySkill" Type="Self.PrimarySkill" Multiplicity="1" />
+          <End Role="ManpowerRequest" Type="Self.ManpowerRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrimarySkill">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManpowerRequest">
+              <PropertyRef Name="PrimarySkillID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceNumber_ManpowerRequest">
+          <End Role="ManpowerRequest" Type="Self.ManpowerRequest" Multiplicity="1" />
+          <End Role="ReferenceNumber" Type="Self.ReferenceNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ManpowerRequest">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReferenceNumber">
+              <PropertyRef Name="ManpowerRequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceNumber_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1" />
+          <End Role="ReferenceNumber" Type="Self.ReferenceNumber" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="ReferenceNumber">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ManpowerRequestTechnology">
+          <End Role="ManpowerRequest" Type="Self.ManpowerRequest" Multiplicity="*" />
+          <End Role="Technology" Type="Self.Technology" Multiplicity="*" />
+        </Association>
+        <Association Name="RolePermission">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="*" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="MagenicManpowerRecruitmentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApplicantLevels" EntityType="Self.ApplicantLevel" />
+          <EntitySet Name="MagenicRegions" EntityType="Self.MagenicRegion" />
+          <EntitySet Name="ManpowerRequests" EntityType="Self.ManpowerRequest" />
+          <EntitySet Name="Permissions" EntityType="Self.Permission" />
+          <EntitySet Name="PrimarySkills" EntityType="Self.PrimarySkill" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Technologies" EntityType="Self.Technology" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="ReferenceNumbers" EntityType="Self.ReferenceNumber" />
+          <AssociationSet Name="FK_ManpowerRequest_ApplicantLevel" Association="Self.FK_ManpowerRequest_ApplicantLevel">
+            <End Role="ApplicantLevel" EntitySet="ApplicantLevels" />
+            <End Role="ManpowerRequest" EntitySet="ManpowerRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManpowerRequest_MagenicRegion" Association="Self.FK_ManpowerRequest_MagenicRegion">
+            <End Role="MagenicRegion" EntitySet="MagenicRegions" />
+            <End Role="ManpowerRequest" EntitySet="ManpowerRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManpowerRequest_PrimarySkill" Association="Self.FK_ManpowerRequest_PrimarySkill">
+            <End Role="PrimarySkill" EntitySet="PrimarySkills" />
+            <End Role="ManpowerRequest" EntitySet="ManpowerRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceNumber_ManpowerRequest" Association="Self.FK_ReferenceNumber_ManpowerRequest">
+            <End Role="ManpowerRequest" EntitySet="ManpowerRequests" />
+            <End Role="ReferenceNumber" EntitySet="ReferenceNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceNumber_Status" Association="Self.FK_ReferenceNumber_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="ReferenceNumber" EntitySet="ReferenceNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="ManpowerRequestTechnology" Association="Self.ManpowerRequestTechnology">
+            <End Role="ManpowerRequest" EntitySet="ManpowerRequests" />
+            <End Role="Technology" EntitySet="Technologies" />
+          </AssociationSet>
+          <AssociationSet Name="RolePermission" Association="Self.RolePermission">
+            <End Role="Permission" EntitySet="Permissions" />
+            <End Role="Role" EntitySet="Roles" />
+          </AssociationSet>
+          <EntitySet Name="Applicants" EntityType="MagenicManpowerRecruitmentModel.Applicant" />
+          <EntitySet Name="Projects" EntityType="MagenicManpowerRecruitmentModel.Project" />
+          <AssociationSet Name="FK_ReferenceNumber_ApplicantLevel" Association="MagenicManpowerRecruitmentModel.FK_ReferenceNumber_ApplicantLevel">
+            <End Role="ApplicantLevel" EntitySet="ApplicantLevels" />
+            <End Role="ReferenceNumber" EntitySet="ReferenceNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ManpowerRequest_Project" Association="MagenicManpowerRecruitmentModel.FK_ManpowerRequest_Project">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="ManpowerRequest" EntitySet="ManpowerRequests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReferenceNumber_Status1" Association="MagenicManpowerRecruitmentModel.FK_ReferenceNumber_Status1">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="ReferenceNumber" EntitySet="ReferenceNumbers" />
+          </AssociationSet>
+          <EntitySet Name="HrDashboardViews" EntityType="MagenicManpowerRecruitmentModel.HrDashboardView" />
+        </EntityContainer>
+        <EntityType Name="Applicant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BriefDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ResumeFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ManpowerRequests" Relationship="MagenicManpowerRecruitmentModel.FK_ManpowerRequest_Project" FromRole="Project" ToRole="ManpowerRequest" />
+        </EntityType>
+        <Association Name="FK_ReferenceNumber_ApplicantLevel">
+          <End Type="MagenicManpowerRecruitmentModel.ApplicantLevel" Role="ApplicantLevel" Multiplicity="1" />
+          <End Type="MagenicManpowerRecruitmentModel.ReferenceNumber" Role="ReferenceNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ApplicantLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReferenceNumber">
+              <PropertyRef Name="LevelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ManpowerRequest_Project">
+          <End Type="MagenicManpowerRecruitmentModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="MagenicManpowerRecruitmentModel.ManpowerRequest" Role="ManpowerRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ManpowerRequest">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReferenceNumber_Status1">
+          <End Type="MagenicManpowerRecruitmentModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="MagenicManpowerRecruitmentModel.ReferenceNumber" Role="ReferenceNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReferenceNumber">
+              <PropertyRef Name="StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="HrDashboardView">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RequestNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PrimarySkillName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicantLevelName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProjectName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManagerName" Type="String" Nullable="false" MaxLength="201" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicantName" Type="String" Nullable="false" MaxLength="201" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicantStartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MagenicManpowerRecruitmentModelStoreContainer" CdmEntityContainer="MagenicManpowerRecruitmentEntities">
+          <EntitySetMapping Name="ApplicantLevels">
+            <EntityTypeMapping TypeName="MagenicManpowerRecruitmentModel.ApplicantLevel">
+              <MappingFragment StoreEntitySet="ApplicantLevel">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MagenicRegions">
+            <EntityTypeMapping TypeName="MagenicManpowerRecruitmentModel.MagenicRegion">
+              <MappingFragment StoreEntitySet="MagenicRegion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ManpowerRequests">
+            <EntityTypeMapping TypeName="MagenicManpowerRecruitmentModel.ManpowerRequest">
+              <MappingFragment StoreEntitySet="ManpowerRequest">
+                <ScalarProperty Name="IsChangeRequest" ColumnName="IsChangeRequest" />
+                <ScalarProperty Name="IsForAdditionalResource" ColumnName="IsForAdditionalResource" />
+                <ScalarProperty Name="IsForReplacement" ColumnName="IsForReplacement" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PrimarySkillID" ColumnName="PrimarySkillID" />
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+                <ScalarProperty Name="ProjectedStartDate" ColumnName="ProjectedStartDate" />
+                <ScalarProperty Name="JobDescription" ColumnName="JobDescription" />
+                <ScalarProperty Name="RequestedBy" ColumnName="RequestedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permissions">
+            <EntityTypeMapping TypeName="MagenicManpowerRecruitmentModel.Permission">
+              <MappingFragment StoreEntitySet="Permission">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrimarySkills">
+            <EntityTypeMapping TypeName="MagenicManpowerRecruitmentModel.PrimarySkill">
+              <MappingFragment StoreEntitySet="PrimarySkill">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="MagenicManpowerRecruitmentModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="MagenicManpowerRecruitmentModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Technologies">
+            <EntityTypeMapping TypeName="MagenicManpowerRecruitmentModel.Technology">
+              <MappingFragment StoreEntitySet="Technology">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MagenicManpowerRecruitmentModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReferenceNumbers">
+            <EntityTypeMapping TypeName="MagenicManpowerRecruitmentModel.ReferenceNumber">
+              <MappingFragment StoreEntitySet="ReferenceNumber">
+                <ScalarProperty Name="LevelId" ColumnName="LevelId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReferenceString" ColumnName="ReferenceString" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="ManpowerRequestId" ColumnName="ManpowerRequestId" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ManpowerRequestTechnology" TypeName="MagenicManpowerRecruitmentModel.ManpowerRequestTechnology" StoreEntitySet="ManpowerRequestTechnology">
+            <EndProperty Name="ManpowerRequest">
+              <ScalarProperty Name="Id" ColumnName="ManpowerRequestID" />
+            </EndProperty>
+            <EndProperty Name="Technology">
+              <ScalarProperty Name="Id" ColumnName="TechnologyID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="RolePermission" TypeName="MagenicManpowerRecruitmentModel.RolePermission" StoreEntitySet="RolePermission">
+            <EndProperty Name="Permission">
+              <ScalarProperty Name="Id" ColumnName="PermissionId" />
+            </EndProperty>
+            <EndProperty Name="Role">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Applicants">
+            <EntityTypeMapping TypeName="MagenicManpowerRecruitmentModel.Applicant">
+              <MappingFragment StoreEntitySet="Applicant">
+                <ScalarProperty Name="ResumeFile" ColumnName="ResumeFile" />
+                <ScalarProperty Name="BriefDescription" ColumnName="BriefDescription" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="MagenicManpowerRecruitmentModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HrDashboardViews">
+            <EntityTypeMapping TypeName="MagenicManpowerRecruitmentModel.HrDashboardView">
+              <MappingFragment StoreEntitySet="HrDashboardView">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ApplicantStartDate" ColumnName="ApplicantStartDate" />
+                <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
+                <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+                <ScalarProperty Name="ApplicantLevelName" ColumnName="ApplicantLevelName" />
+                <ScalarProperty Name="PrimarySkillName" ColumnName="PrimarySkillName" />
+                <ScalarProperty Name="RequestNumber" ColumnName="RequestNumber" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

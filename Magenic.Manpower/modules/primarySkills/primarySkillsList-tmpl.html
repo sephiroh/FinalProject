@@ -1,0 +1,19 @@
+﻿<h3>
+    Primary Skills
+    <span class="pull-right">
+        <button type="button" class="btn btn-xs btn-primary" ng-click="vm.showModal('newPrimarySkill')"><span class="glyphicon glyphicon-plus"></span></button>
+        <button type="button" class="btn btn-xs btn-default" ng-click="vm.refreshCount = vm.refreshCount + 1"><span class="glyphicon glyphicon-refresh"></span></button>
+    </span>
+</h3>
+<hr />
+
+<primary-skills-list primary-Skills-Data="vm.primarySkills" new-Data-Added="vm.newprimarySkills" refresh-count="vm.refreshCount"></primary-skills-list>
+
+<shared-modal modalid="'newPrimarySkill'"
+              save-button-label="'Save'"
+              save-button-class="'btn btn-primary'"
+              on-save="vm.createPrimarySkill(data)"             
+              data="vm.primarySkill"
+              title="'Create Primary Skill'"
+              body='<primary-skills-form data="$ctrl.data"></primary-skills-form>'              
+              ></shared-modal>
