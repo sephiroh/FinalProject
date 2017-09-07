@@ -54,11 +54,6 @@ namespace Magenic.Manpower.Test
         [TestMethod]
         public void Test3()
         {
-            //This is a sample test
-            // this is sample commit
-            //asdfasd
-
-            var x = string.Empty;
 
         }
     }
